@@ -1,0 +1,25 @@
+{
+  "name": "docs-ssh-repo",
+  "private": true,
+  "packageManager": "pnpm@10.24.0",
+  "scripts": {
+    "build": "pnpm --filter docs-ssh run build",
+    "dev": "pnpm --filter docs-ssh run dev",
+    "test": "pnpm --filter docs-ssh run test",
+    "start": "pnpm --filter docs-ssh run start",
+    "dev:web": "pnpm --filter docs-ssh-web run dev",
+    "build:web": "pnpm --filter docs-ssh-web run build",
+    "test:web": "pnpm --filter docs-ssh-web run test",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "format": "biome format --write ."
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "ssh2"
+    ]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.9"
+  }
+}

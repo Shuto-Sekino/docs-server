@@ -1,0 +1,11 @@
+# Build output
+dist/
+
+# SSH host key (contains private key — never commit)
+ssh_host_key
+
+# Load test traces
+load-test/traces/*.json
+
+# Local env
+.env.local
