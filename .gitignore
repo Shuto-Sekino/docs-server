@@ -1,4 +1,13 @@
+# Dependencies
 node_modules/
+
+# Build outputs
 .next/
 dist/
+
+# Environment
 *.env.local
+
+# Misc
+.DS_Store
+*.pem
