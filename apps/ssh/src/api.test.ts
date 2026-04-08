@@ -121,7 +121,7 @@ describe('CORS', () => {
 describe('command cache', () => {
   it('uses cache when provided', async () => {
     const cache = new CommandCache()
-    const cwd = '/supabase'
+    const cwd = '/docs'
     cache.set(cwd, 'echo cached', { stdout: 'from-cache\n', stderr: '', exitCode: 0, env: {} })
 
     const cachedApp = createApiServer({

@@ -35,6 +35,7 @@ const COMMAND_CACHE_MAX_OUTPUT_BYTES = parseInt(
 )
 
 const WEB_DIR = process.env.WEB_DIR
+const DOCS_DIR = process.env.DOCS_DIR
 const ENABLE_EXEC_API = process.env.ENABLE_EXEC_API === 'true'
 const ENABLE_EDITOR = process.env.ENABLE_EDITOR === 'true'
 const EDITOR_API_KEY = process.env.EDITOR_API_KEY
@@ -114,6 +115,7 @@ async function main() {
     commandCache,
     rateLimiter,
     allowedOrigin: WEB_ORIGIN,
+    docsDir: DOCS_DIR,
     webDir: WEB_DIR,
     enableEditor: ENABLE_EDITOR,
     editorApiKey: EDITOR_API_KEY,

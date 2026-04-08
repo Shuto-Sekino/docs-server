@@ -1,5 +1,5 @@
 import { generateKeyPairSync } from 'node:crypto'
-import { mkdtempSync } from 'node:fs'
+import { mkdtempSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { Client } from 'ssh2'
@@ -14,6 +14,7 @@ const hostKey = generateKeyPairSync('rsa', { modulusLength: 2048 }).privateKey.e
 }) as string
 
 const docsDir = mkdtempSync(join(tmpdir(), 'ssh-test-docs-'))
+writeFileSync(join(docsDir, 'AGENTS.md'), '## Personal Docs\n\nAccess docs via `ssh docs.sh <command>`.\n')
 
 let port: number
 let srv: ReturnType<typeof createSSHServer>
@@ -134,8 +135,8 @@ describe('SSH Server', () => {
       const client = await connectClient()
       const { stdout, code } = await execCommand(client, 'agents')
       expect(code).toBe(0)
-      expect(stdout).toContain('## Supabase Docs')
-      expect(stdout).toContain('ssh supabase.sh')
+      expect(stdout).toContain('## Personal Docs')
+      expect(stdout).toContain('ssh docs.sh')
     })
   })
 
@@ -188,7 +189,7 @@ describe('SSH Server', () => {
           waitForPrompt()
         })
       })
-      expect(output).toContain('Thanks for stopping by')
+      expect(output).toContain('See you next time!')
     })
   })
 
